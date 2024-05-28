@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+    <style>
+        :root {
+            --custom-bg-color: linear-gradient(180deg, #eee, #fff 100px, #fff);
+        }
+
+        body {
+            background-image: var(--custom-bg-color);
+        }
+
+        .container {
+            max-width: 960px;
+        }
+
+        .pricing-header {
+            max-width: 700px;
+        }
+
+        .slider_frame {
+            border-radius: 0.1666666667em;
+            text-align: center;
+            height: 100px;
+            line-height: 100px;
+            -webkit-box-shadow: inset 0 0 0 2px hsla(0, 0%, 100%, .5);
+            box-shadow: inset 0 0 0 2px hsla(0, 0%, 100%, .5);
+            color: #fff;
+            background: transparent;
+            font-size: 1em;
+            font-weight: 900;
+            background: red;
+
+            @media only screen and (max-width: 600px) {
+                height: 50px;
+                line-height: 50px;
+            }
+        }
+
+        .home-thumbnails.home-2-thumbs a {
+            text-decoration: none;
+        }
+
+        .home-thumbnails a u {
+            position: absolute;
+            right: 0px;
+            left: 0px;
+            font-size: 12px;
+            color: #1f1f1f;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-top: -22px;
+            padding: 4px 15px;
+            font-weight: 700;
+            display: none;
+        }
+
+        .home-thumbnails a strong {
+            font-size: 15px;
+            display: block;
+            font-weight: 400;
+            line-height: 25px;
+            padding-top: 5px;
+            text-align: center;
+        }
+
+        .home-thumbnails img {
+            max-height: 200px;
+
+        }
+
+        .home-thumbnails a em {
+            font-size: 10px;
+            display: block;
+            font-weight: 400;
+            color: #868686;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .home-thumbnails a span {
+            font-size: 14px;
+            text-align: center;
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .color-black {
+            color: #000000;
+        }
+
+        .color-red-dark {
+            color: #c0392b;
+        }
+
+        .menu-sticky {
+            position: sticky;
+            top: 0px;
+            padding-top: 10px;
+            background: white;
+        }
+
+        .slide-background {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            z-index: 1;
+        }
+
+        .slide-title {
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-transform: capitalize;
+            font-weight: bold;
+
+            @media only screen and (max-width: 600px) {
+                font-size: 11px;
+                font-weight: bold;
+            }
+        }
+
+        .home-thumbnails-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .main-logo {
+            width: 200px;
+
+            @media only screen and (max-width: 600px) {
+                width: 150px;
+            }
+        }
+
+        .slick-wrapper {}
+
+        .slide-item {
+            color: white;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100px;
+            border: 1px solid white;
+            background-color: #1f334c;
+
+            @media only screen and (max-width: 600px) {
+                height: 75px;
+            }
+        }
+
+        .slick-slide>div {
+            margin-bottom: 5px;
+
+            @media only screen and (max-width: 600px) {
+                margin-bottom: 15px;
+            }
+        }
+
+        .fixed-menu {
+            position: fixed;
+            right: 10px;
+            bottom: 20px;
+            background: #eae9e9;
+            border-radius: 10px;
+            font-weight: bold;
+            color: black;
+            padding: 6px;
+            font-size: 10px;
+            user-select: none;
+
+        }
+
+        .fixed-menu svg {
+            animation: wifi-anim 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes wifi-anim {
+            to {
+                color: white;
+            }
+
+            from {
+                color: black;
+            }
+        }
+    </style>
+    <title>QR MENU</title>
+</head>
+
+<body>
+
+    <div class="container py-3">
+        <header class="">
+            <div class="d-flex  flex-md-row align-items-center pb-3 mb-4 border-bottom">
+
+                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                    <img class="main-logo" src="logo.png" alt="">
+                    <!-- 
+                        <span class="fs-4">Website</span>
+                    -->
+                </a>
+
+                <nav class="d-inline-flex mt-2 mt-md-0 ms-auto gap-3">
+                    <div class="btn-group">
+                        <button class="btn  dropdown-toggle mr-5" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://flagicons.lipis.dev/flags/4x3/tr.svg" alt="">
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">
+                                    <img width="20" src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="">
+                                    EN
+                                </a></li>
+                            <li><a class="dropdown-item" href="#">
+                                    <img width="20" src="https://flagicons.lipis.dev/flags/4x3/ru.svg" alt="">
+                                    RU
+                                </a></li>
+                        </ul>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn  dropdown-toggle mr-5" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="d-none d-sm-inline-block">Para Birimi :</span> $
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                <a class="dropdown-item" href="#">Dollars($)</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Euros(€)</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--
+                        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Enterprise</a>
+                    -->
+                </nav>
+            </div>
+        </header>
+
+        <div class="search">
+            <form action="search.html" method="GET">
+                <div class="input-group mb-3">
+
+                    <span class="input-group-text bg-light" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                    </span>
+                    <input name="q" type="text" class="form-control" placeholder="Arama yap.." aria-label="Arama yap.."
+                        aria-describedby="basic-addon1">
+
+                </div>
+            </form>
+        </div>
+
+        <h3>Ne İstersiniz?</h3>
+
+        <div class="slick-wrapper">
+            <div id="slick1">
+                <div class="slide-item position-relative">
+                    <img class="slide-background" src="" alt="">
+                    <span class="slide-title">
+                        Başlangıçlar
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Ana Yemekler
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Tatlılar
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        İçecekler
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Özel Menüler
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Çocuk Menüsü
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Günlük Özel
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Sıcak Başlangıç
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Soğuk Başlangıç
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Soğuk Tatlılar
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Alkolsüz İçecekler
+
+                    </span>
+                </div>
+                <div class="slide-item position-relative">
+
+                    <span class="slide-title">
+                        Sıcak İçecekler
+
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top " style="margin-top: 100px;">
+            <div class="row">
+
+                <div class="col-12 col-md-4">
+                    <h5>Çalışma Saatleri</h5>
+                    <table class="table table-sm table-striped">
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-calendar" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                    </svg>
+                                    Pazartesi
+                                </td>
+                                <td>01:00 - 00:00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-calendar" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                    </svg>
+                                    Salı
+                                </td>
+                                <td>01:00 - 00:00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-calendar" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                    </svg>
+                                    Çarşamba
+                                </td>
+                                <td>01:00 - 00:00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-calendar" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                    </svg>
+                                    Perşembe
+                                </td>
+                                <td>01:00 - 00:00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-calendar" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                    </svg>
+                                    Cuma
+                                </td>
+                                <td>01:00 - 00:00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-calendar" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                    </svg>
+                                    Cumartesi
+                                </td>
+                                <td>01:00 - 00:00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-calendar" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                    </svg>
+                                    Pazar
+                                </td>
+                                <td>01:00 - 00:00</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h5>Hakkında</h5>
+                    <ul class="list-unstyled text-small">
+                        Cafe Dev, modern teknoloji ve sıcak bir atmosferi bir araya getiren, lezzetli kahveler ve taze
+                        yiyeceklerle dolu rahat bir mekandır. Misafirlerimize kaliteli hizmet sunmayı ve keyifli anlar
+                        yaşatmayı hedefliyoruz.
+                        <!--
+                            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+                        -->
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h5></h5>
+                    <ul class="list-unstyled text-small">
+                        <li class="mb-2">
+                            <div class="d-grid">
+                                <button data-bs-toggle="modal" data-bs-target="#yoltarifi"
+                                    class="btn btn-outline-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path
+                                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                    </svg>
+
+                                    Yol Tarifi
+                                </button>
+                            </div>
+
+                        </li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                    </svg>
+                                    Adresi:
+                                </span>
+                                İstanbul /
+                                Turkey</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-telephone" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                                    </svg>
+                                    Telefon:
+                                </span>
+                                0534 000 50 00
+                            </a></li>
+                        <li class="mb-3"><a class="link-secondary text-decoration-none" href="#">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-envelope" viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+                                    </svg>
+                                    Eposta:
+                                </span>
+                                cafedev@smurftheme.net
+                            </a></li>
+
+                        <li class="mb-1">
+                            <ul class="list-unstyled text-small d-flex gap-3">
+                                <li>
+                                    <a href="" class="color-black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" class="color-black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                            <path
+                                                d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" class="color-black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                            <path
+                                                d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md text-center">
+                    <small class="d-block mb-3 text-muted">© 2024 Tüm hakları saklıdır.</small>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+
+
+    <div class="fixed-menu">
+
+        <div class="row d-flex align-items-center justify-content-center text-center" role="button"
+            data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi"
+                viewBox="0 0 16 16">
+                <path
+                    d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049" />
+                <path
+                    d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z" />
+            </svg>
+            <span>WIFI Bilgileri</span>
+        </div>
+
+    </div>
+    <!-- WIFI BILGILERI -->
+    <div class="modal" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">WIFI Bilgileri</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm table-striped">
+
+                        <tbody>
+                            <tr>
+                                <td>Wifi Adı</td>
+                                <td>Test</td>
+                            </tr>
+                            <tr>
+                                <td>Wifi Şifresi</td>
+                                <td>E2#S22$21.2512</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YOL TARIFI -->
+    <div class="modal" id="yoltarifi" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">YOL TARIFI</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm table-striped">
+
+                        <tbody>
+                            <tr>
+                                <td><a href="">
+                                        Google Maps ile Yol Tarifi
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="">
+                                        Yandex ile Yol Tarifi
+                                    </a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+    </script>
+
+    <script>
+        $('#slick1').slick({
+            rows: 2,
+            dots: false,
+            arrows: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 6,
+            slidesToScroll: 6,
+            responsive: [
+
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+
+    </script>
+</body>
+
+</html>
